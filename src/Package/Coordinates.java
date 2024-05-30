@@ -2,20 +2,26 @@ package Package;
 
 import java.util.Objects;
 
-public class Points {
-    int x;
-    int y;
-    public Points(int x, int y) {
+public class Coordinates {
+    private int x;
+    private int y;
+    public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Points points = (Points) o;
-        return x == points.x && y == points.y;
+        Coordinates coordinates = (Coordinates) o;
+        return x == coordinates.x && y == coordinates.y;
     }
 
     @Override
