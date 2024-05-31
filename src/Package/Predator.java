@@ -14,7 +14,7 @@ public class Predator extends Creature{
         this.attackPower = attackPower;
     }
 
-    private void makeMove(){
+    public void makeMove(){
 
     }
 

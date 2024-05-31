@@ -4,22 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="">
+    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Coordinates.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/EntityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/EntityName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/HealthPoints.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/HealthPoints.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Herbivore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/MapDimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/MapDimension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/MovementSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/MovementSpeed.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/SimulationApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/SimulationApp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Xasthurs"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Xasthurs&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Xasthurs/Simulation.git",
-    "accountId": "8edd9951-98e7-45bd-8a96-072530f326a8"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Xasthurs/Simulation.git&quot;,
+    &quot;accountId&quot;: &quot;8edd9951-98e7-45bd-8a96-072530f326a8&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -116,11 +105,26 @@
       <workItem from="1716869548287" duration="6142000" />
       <workItem from="1716955754914" duration="2720000" />
       <workItem from="1716994089282" duration="7000" />
-      <workItem from="1716997520958" duration="10273000" />
+      <workItem from="1716997520958" duration="10763000" />
+      <workItem from="1717075705926" duration="38000" />
+      <workItem from="1717136441723" duration="5446000" />
     </task>
+    <task id="LOCAL-00001" summary="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
+      <option name="closed" value="true" />
+      <created>1717061947607</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717061947607</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)" />
   </component>
 </project>
