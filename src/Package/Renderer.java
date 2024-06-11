@@ -28,9 +28,9 @@ public class Renderer {
     }
 
     public void greeter(){
-
         System.out.println("Привет. Это симуляция. ");
     }
+
     void move(){
 
     }

@@ -1,9 +1,13 @@
 package Package;
 
-public class Creature extends Entity{
+public abstract class Creature extends Entity{
     HealthPoints hp;
     MovementSpeed speed;
-    private void makeMove(){
+    public Creature(Coordinates coordinates, EntityName entityName, HealthPoints hp, MovementSpeed speed) {
+        super(coordinates, entityName);
+        this.hp = hp;
+        this.speed = speed;
     }
+    abstract Coordinates makeMove(Coordinates currentPosition);
 }
 

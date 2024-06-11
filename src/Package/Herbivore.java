@@ -6,13 +6,9 @@ public class Herbivore extends Creature{
 
     private Map map;
 
-    public Herbivore(Coordinates coordinates, EntityName name, HealthPoints hp, MovementSpeed speed) {
-        this.coordinates = coordinates;
-        this.entityName = name;
-        this.hp = hp;
-        this.speed = speed;
+    public Herbivore(Coordinates coordinates, EntityName entityName, HealthPoints hp, MovementSpeed speed) {
+        super(coordinates, entityName, hp, speed);
     }
-
 
     private void getNewReachablePoints(Coordinates node, Queue<Coordinates> reachable, ArrayList<Coordinates> explored, HashMap<Coordinates, Coordinates> previousNodes) {
         Coordinates right = new Coordinates(node.getX() + 1, node.getY());
@@ -66,7 +62,7 @@ public class Herbivore extends Creature{
         }
         return pathForGrass;
     }
-
+    @Override
     public Coordinates makeMove(Coordinates currentPosition){
         Deque<Coordinates> pathForGrass = findGrass(currentPosition);
         return pathForGrass.pollLast();
