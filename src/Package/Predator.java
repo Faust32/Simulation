@@ -3,7 +3,6 @@ package Package;
 import java.util.*;
 
 public class Predator extends Creature{
-    private Map map;
     private final int attackPower;
     public int getAttackPower() {
         return attackPower;
@@ -15,32 +14,37 @@ public class Predator extends Creature{
         this.attackPower = attackPower;
     }
 
-
     private void attackHerbivore(){
 
     }
 
+    private boolean isCoordinateInMap(Coordinates coordinate) {
+        if (coordinate.getX() <= 10 && coordinate.getY() <= 10 && coordinate.getX() >= 0 && coordinate.getY() >= 0) {
+            return true;
+        }
+        return false;
+    }
 
 
-    private void getNewReachablePoints(Coordinates node, Queue<Coordinates> reachable, ArrayList<Coordinates> explored, HashMap<Coordinates, Coordinates> previousNodes) {
+    private void getNewReachablePoints(Coordinates node, Queue<Coordinates> reachable, ArrayList<Coordinates> explored, HashMap<Coordinates, Coordinates> previousNodes, Map map) {
         Coordinates right = new Coordinates(node.getX() + 1, node.getY());
         Coordinates left = new Coordinates(node.getX() - 1, node.getY());
         Coordinates up = new Coordinates(node.getX(), node.getY() + 1);
         Coordinates down = new Coordinates(node.getX(), node.getY() - 1);
 
-        if (!explored.contains(right) && !reachable.contains(right)) {
+        if (!explored.contains(right) && !reachable.contains(right) && isCoordinateInMap(right) && (map.getFromMap(right) instanceof Herbivore || map.getFromMap(right) == null)){
             reachable.add(right);
             previousNodes.put(right, node);
         }
-        if (!explored.contains(left) && !reachable.contains(left)) {
+        if (!explored.contains(left) && !reachable.contains(left) && isCoordinateInMap(left) && (map.getFromMap(left) instanceof Herbivore || map.getFromMap(left) == null)){
             reachable.add(left);
             previousNodes.put(left, node);
         }
-        if (!explored.contains(up) && !reachable.contains(up)) {
+        if (!explored.contains(up) && !reachable.contains(up) && isCoordinateInMap(up) && (map.getFromMap(up) instanceof Herbivore || map.getFromMap(up) == null)){
             reachable.add(up);
             previousNodes.put(up, node);
         }
-        if (!explored.contains(down) && !reachable.contains(down)) {
+        if (!explored.contains(down) && !reachable.contains(down) && isCoordinateInMap(down) && (map.getFromMap(down) instanceof Herbivore || map.getFromMap(down) == null)){
             reachable.add(down);
             previousNodes.put(down, node);
         }
@@ -49,15 +53,19 @@ public class Predator extends Creature{
 
     private Deque<Coordinates> buildPath(Coordinates startCoordinates, Coordinates endCoordinates, HashMap<Coordinates, Coordinates> previousNodes) {
         Deque<Coordinates> path = new LinkedList<Coordinates>();
-        path.add(endCoordinates);
-        while(!previousNodes.containsKey(endCoordinates)) {
-            path.add(previousNodes.get(endCoordinates));
-            endCoordinates = previousNodes.get(endCoordinates);
+        Coordinates current = endCoordinates;
+        while (current != null && previousNodes.containsKey(current)) {
+            path.addFirst(current);
+            current = previousNodes.get(current);
         }
+        if (current != null) {
+            path.addFirst(startCoordinates);
+        }
+        path.pop();
         return path;
     }
 
-    private Deque<Coordinates> findPray(Coordinates currentCoordinate){
+    private Deque<Coordinates> findPray(Coordinates currentCoordinate, Map map){
         Queue<Coordinates> reachable = new LinkedList<>();
         Deque<Coordinates> pathForPray = new LinkedList<>();
         ArrayList<Coordinates> explored = new ArrayList<>();
@@ -70,15 +78,23 @@ public class Predator extends Creature{
                 pathForPray = buildPath(currentCoordinate, node, previousNodes);
             }
             explored.add(node);
-            getNewReachablePoints(node, reachable, explored, previousNodes);
+            getNewReachablePoints(node, reachable, explored, previousNodes, map);
         }
         return pathForPray;
     }
 
     @Override
-    public Coordinates makeMove(Coordinates currentPosition){
-        Deque<Coordinates> pathForPray = findPray(currentPosition);
-        return pathForPray.pollLast();
+    public void makeMove(Coordinates currentPosition, Map map){
+        Deque<Coordinates> pathForPray = findPray(currentPosition, map);
+        Entity predator = map.getFromMap(currentPosition);
+        map.remove(currentPosition);
+        if (map.getFromMap(pathForPray.peek()) instanceof Herbivore){
+            map.remove(currentPosition);
+            map.put(pathForPray.poll(), predator);
+        }
+        else {
+            map.put(pathForPray.poll(), predator);
+        }
     }
 
 }

@@ -8,6 +8,6 @@ public abstract class Creature extends Entity{
         this.hp = hp;
         this.speed = speed;
     }
-    abstract Coordinates makeMove(Coordinates currentPosition);
+    abstract void makeMove(Coordinates currentPosition, Map map);
 }
 

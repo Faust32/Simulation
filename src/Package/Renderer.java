@@ -21,6 +21,7 @@ public class Renderer {
             for (int i = 0; i < MapDimension.height-1; i++) {
                 System.out.print("-------");
             }
+        System.out.println();
     }
 
     void fieldPrinterWithIterations(){

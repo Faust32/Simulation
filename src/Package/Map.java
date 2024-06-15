@@ -13,6 +13,22 @@ public class Map {
         return map;
     }
 
+    public boolean containsKey(Coordinates coordinates) {
+        return map.containsKey(coordinates);
+    }
+
+    public void put(Coordinates coordinates, Entity entity) {
+        map.put(coordinates, entity);
+    }
+
+    public Iterable<? extends java.util.Map.Entry<Coordinates,Entity>> entrySet() {
+        return map.entrySet();
+    }
+
+    public void remove(Coordinates coordinates) {
+        map.remove(coordinates);
+    }
+
 
 //    public void putObject(Coordinates coordinates, Entity entity){
 //        entity.coordinates = coordinates;

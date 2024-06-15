@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="Fixed map generation at the start. Now it generates random entities on the map.">
+    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="Updated Entity and subclasses of it, also made search for Predator class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Package/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Actions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Herbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Package/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Predator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Renderer.java" afterDir="false" />
     </list>
@@ -51,28 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainPrikol.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Map.executor&quot;: &quot;Debug&quot;,
-    &quot;Application.Map1.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SimulationApp.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.MainPrikol.executor": "Run",
+    "Application.Map.executor": "Debug",
+    "Application.Map1.executor": "Run",
+    "Application.SimulationApp.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Package" />
@@ -121,7 +122,13 @@
       <workItem from="1717728207213" duration="14000" />
       <workItem from="1717853038106" duration="1000" />
       <workItem from="1717939074928" duration="3000" />
-      <workItem from="1718114446660" duration="2632000" />
+      <workItem from="1718114446660" duration="4403000" />
+      <workItem from="1718197903363" duration="3754000" />
+      <workItem from="1718259683681" duration="5000" />
+      <workItem from="1718287312238" duration="1495000" />
+      <workItem from="1718341579687" duration="5420000" />
+      <workItem from="1718359316681" duration="3121000" />
+      <workItem from="1718392800318" duration="2586000" />
     </task>
     <task id="LOCAL-00001" summary="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
       <option name="closed" value="true" />
@@ -155,16 +162,46 @@
       <option name="project" value="LOCAL" />
       <updated>1718114622278</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated Entity and subclasses of it, also made search for Predator class.">
+      <option name="closed" value="true" />
+      <created>1718117161812</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1718117161812</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)" />
     <MESSAGE value="Predators left for an update. Also need to do some fixes for makeMove method. Looks not very effective to me." />
     <MESSAGE value="Fixed map generation at the start. Now it generates random entities on the map." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed map generation at the start. Now it generates random entities on the map." />
+    <MESSAGE value="Updated Entity and subclasses of it, also made search for Predator class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Entity and subclasses of it, also made search for Predator class." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.util.ConcurrentModificationException" package="java.util" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

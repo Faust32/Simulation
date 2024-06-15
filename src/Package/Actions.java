@@ -1,11 +1,12 @@
 package Package;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Actions{
-    Map map1 = new Map();
-    HashMap<Coordinates, Entity> map = map1.getMap();
+    Map map = new Map();
+    ArrayList<Creature> creatures = new ArrayList<>();
 
     private boolean isCellEmpty(Coordinates coordinates) {
         return !map.containsKey(coordinates);
@@ -53,7 +54,9 @@ public class Actions{
             int randomCoordinateY = ThreadLocalRandom.current().nextInt(1, 11);
             Coordinates coord = new Coordinates(randomCoordinateX, randomCoordinateY);
             if (isCellEmpty(coord)) {
-                map.put(coord, new Herbivore(coord, new EntityName("COW_"), new HealthPoints(30), new MovementSpeed(1)));
+                Creature cow = new Herbivore(coord, new EntityName("COW_"), new HealthPoints(30), new MovementSpeed(1));
+                map.put(coord, cow);
+                creatures.add(cow);
                 numberOfCows--;
             }
         }
@@ -65,7 +68,9 @@ public class Actions{
             int randomCoordinateY = ThreadLocalRandom.current().nextInt(1, 11);
             Coordinates coord = new Coordinates(randomCoordinateX, randomCoordinateY);
             if (isCellEmpty(coord)) {
-                map.put(coord, new Herbivore(coord, new EntityName("PIG_"), new HealthPoints(40), new MovementSpeed(1)));
+                Creature pig = new Herbivore(coord, new EntityName("PIG_"), new HealthPoints(40), new MovementSpeed(1));
+                map.put(coord, pig);
+                creatures.add(pig);
                 numberOfPigs--;
             }
         }
@@ -77,7 +82,9 @@ public class Actions{
             int randomCoordinateY = ThreadLocalRandom.current().nextInt(1, 11);
             Coordinates coord = new Coordinates(randomCoordinateX, randomCoordinateY);
             if (isCellEmpty(coord)) {
-                map.put(coord, new Predator(coord, new EntityName("WOLF"), new HealthPoints(50), new MovementSpeed(2), 5));
+                Creature wolf = new Predator(coord, new EntityName("WOLF"), new HealthPoints(50), new MovementSpeed(2), 5);
+                map.put(coord, wolf);
+                creatures.add(wolf);
                 numberOfWolfs--;
             }
         }
@@ -106,12 +113,16 @@ public class Actions{
 
     public HashMap<Coordinates, Entity> initActions(){
         fillMapRandomly();
-        return map;
+        return map.getMap();
     }
 
-    public void turnActions(){
-
+    public void turnActions() {
+        for (Creature creature : creatures) {
+            creature.makeMove(creature.coordinates, map);
+        }
     }
+
+
 
 }
 
@@ -122,5 +133,9 @@ class MainPrikol{
         Actions t = new Actions();
         HashMap<Coordinates, Entity> map = t.initActions();
         renderer.fieldStaticPrinter(map);
+        for (int j = 0; j < 5; j++) {
+            t.turnActions();
+            renderer.fieldStaticPrinter(map);
+        }
     }
 }
