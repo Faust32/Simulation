@@ -8,7 +8,7 @@ public class Herbivore extends Creature{
     }
 
     private boolean isCoordinateInMap(Coordinates coordinate) {
-        if (coordinate.getX() <= 10 && coordinate.getY() <= 10 && coordinate.getX() >= 0 && coordinate.getY() >= 0) {
+        if (coordinate.getX() <= 10 && coordinate.getY() <= 10 && coordinate.getX() > 0 && coordinate.getY() > 0) {
             return true;
         }
         return false;
@@ -39,7 +39,7 @@ public class Herbivore extends Creature{
     }
 
     private Deque<Coordinates> buildPath(Coordinates startCoordinates, Coordinates endCoordinates, HashMap<Coordinates, Coordinates> previousNodes) {
-        Deque<Coordinates> path = new LinkedList<Coordinates>();
+        Deque<Coordinates> path = new LinkedList<>();
         Coordinates current = endCoordinates;
         while (current != null && previousNodes.containsKey(current)) {
             path.addFirst(current);
@@ -63,7 +63,6 @@ public class Herbivore extends Creature{
             Entity currentObject = map.getFromMap(node);
             if (currentObject instanceof Entity.Grass){
                 pathForGrass = buildPath(currentCoordinate, node, previousNodes);
-                break;
             }
             explored.add(node);
             getNewReachablePoints(node, reachable, explored, previousNodes, map);
@@ -73,14 +72,27 @@ public class Herbivore extends Creature{
     @Override
     public void makeMove(Coordinates currentPosition, Map map){
         Deque<Coordinates> pathForGrass = findGrass(currentPosition, map);
+        if (pathForGrass == null || pathForGrass.isEmpty()) {
+            // Handle the case where no path to grass is found
+            return;
+        }
+
         Entity herbivore = map.getFromMap(currentPosition);
-        map.remove(currentPosition);
-        if (map.getFromMap(pathForGrass.peek()) instanceof Entity.Grass){
+        if (herbivore == null) {
+            // Handle the case where there is no herbivore at the current position
+            return;
+        }
+        Coordinates positionToMove = pathForGrass.poll();
+        if (map.getFromMap(positionToMove) instanceof Entity.Grass){
+            map.remove(positionToMove);
+            herbivore.updateCoordinates(positionToMove);
+            map.put(positionToMove, herbivore);
             map.remove(currentPosition);
-            map.put(pathForGrass.poll(), herbivore);
         }
         else {
-            map.put(pathForGrass.poll(), herbivore);
+            herbivore.updateCoordinates(positionToMove);
+            map.put(positionToMove, herbivore);
+            map.remove(currentPosition);
         }
     }
 

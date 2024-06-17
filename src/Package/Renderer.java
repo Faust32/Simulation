@@ -24,17 +24,8 @@ public class Renderer {
         System.out.println();
     }
 
-    void fieldPrinterWithIterations(){
-
-    }
-
     public void greeter(){
         System.out.println("Привет. Это симуляция. ");
     }
-
-    void move(){
-
-    }
-
 
 }

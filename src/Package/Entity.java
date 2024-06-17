@@ -13,6 +13,10 @@ abstract public class Entity {
         return coordinates;
     }
 
+    protected void updateCoordinates(Coordinates newCoordinates) {
+        coordinates = newCoordinates;
+    }
+
     static class Grass extends Entity {
         public Grass(Coordinates coordinates, EntityName entityName) {
             super(coordinates, entityName);

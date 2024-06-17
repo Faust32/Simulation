@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="Updated Entity and subclasses of it, also made search for Predator class.">
+    <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="turnActions() - done. Now I need to do some fixes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Package/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Herbivore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Map.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Predator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Package/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Package/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Simulation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Package/SimulationApp.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +60,7 @@
     "Application.MainPrikol.executor": "Run",
     "Application.Map.executor": "Debug",
     "Application.Map1.executor": "Run",
+    "Application.Simulation.executor": "Run",
     "Application.SimulationApp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
@@ -128,7 +131,11 @@
       <workItem from="1718287312238" duration="1495000" />
       <workItem from="1718341579687" duration="5420000" />
       <workItem from="1718359316681" duration="3121000" />
-      <workItem from="1718392800318" duration="2586000" />
+      <workItem from="1718392800318" duration="3931000" />
+      <workItem from="1718475001430" duration="1902000" />
+      <workItem from="1718512826846" duration="5268000" />
+      <workItem from="1718611818117" duration="1937000" />
+      <workItem from="1718635776308" duration="649000" />
     </task>
     <task id="LOCAL-00001" summary="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
       <option name="closed" value="true" />
@@ -170,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718117161812</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="turnActions() - done. Now I need to do some fixes.">
+      <option name="closed" value="true" />
+      <created>1718423212748</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718423212748</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +207,8 @@
     <MESSAGE value="Predators left for an update. Also need to do some fixes for makeMove method. Looks not very effective to me." />
     <MESSAGE value="Fixed map generation at the start. Now it generates random entities on the map." />
     <MESSAGE value="Updated Entity and subclasses of it, also made search for Predator class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Entity and subclasses of it, also made search for Predator class." />
+    <MESSAGE value="turnActions() - done. Now I need to do some fixes." />
+    <option name="LAST_COMMIT_MESSAGE" value="turnActions() - done. Now I need to do some fixes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -201,6 +217,20 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="5" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Package/Herbivore.java</url>
+          <line>72</line>
+          <properties class="Package.Herbivore" method="makeMove">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Package/Simulation.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

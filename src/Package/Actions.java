@@ -1,7 +1,6 @@
 package Package;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Actions{
@@ -56,7 +55,6 @@ public class Actions{
             if (isCellEmpty(coord)) {
                 Creature cow = new Herbivore(coord, new EntityName("COW_"), new HealthPoints(30), new MovementSpeed(1));
                 map.put(coord, cow);
-                creatures.add(cow);
                 numberOfCows--;
             }
         }
@@ -70,7 +68,6 @@ public class Actions{
             if (isCellEmpty(coord)) {
                 Creature pig = new Herbivore(coord, new EntityName("PIG_"), new HealthPoints(40), new MovementSpeed(1));
                 map.put(coord, pig);
-                creatures.add(pig);
                 numberOfPigs--;
             }
         }
@@ -84,7 +81,6 @@ public class Actions{
             if (isCellEmpty(coord)) {
                 Creature wolf = new Predator(coord, new EntityName("WOLF"), new HealthPoints(50), new MovementSpeed(2), 5);
                 map.put(coord, wolf);
-                creatures.add(wolf);
                 numberOfWolfs--;
             }
         }
@@ -117,18 +113,20 @@ public class Actions{
     }
 
     public void turnActions() {
+        for (java.util.Map.Entry<Coordinates, Entity> entry : map.entrySet()) {
+            Entity entity = entry.getValue();
+            if (entity instanceof Herbivore || entity instanceof Predator) {
+                creatures.add((Creature)entity);
+            }
+        }
         for (Creature creature : creatures) {
             creature.makeMove(creature.coordinates, map);
         }
     }
-
-
-
 }
 
 class MainPrikol{
     public static void main(String[] args) {
-        int i = 0;
         Renderer renderer = new Renderer();
         Actions t = new Actions();
         HashMap<Coordinates, Entity> map = t.initActions();

@@ -1,6 +1,5 @@
 package Package;
 import java.util.HashMap;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Map {
     private HashMap<Coordinates, Entity> map = new HashMap<>();
@@ -21,12 +20,12 @@ public class Map {
         map.put(coordinates, entity);
     }
 
-    public Iterable<? extends java.util.Map.Entry<Coordinates,Entity>> entrySet() {
-        return map.entrySet();
-    }
-
     public void remove(Coordinates coordinates) {
         map.remove(coordinates);
+    }
+
+    public Iterable<? extends java.util.Map.Entry<Coordinates, Entity>> entrySet() {
+        return map.entrySet();
     }
 
 

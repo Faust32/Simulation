@@ -19,7 +19,7 @@ public class Predator extends Creature{
     }
 
     private boolean isCoordinateInMap(Coordinates coordinate) {
-        if (coordinate.getX() <= 10 && coordinate.getY() <= 10 && coordinate.getX() >= 0 && coordinate.getY() >= 0) {
+        if (coordinate.getX() <= 10 && coordinate.getY() <= 10 && coordinate.getX() > 0 && coordinate.getY() > 0) {
             return true;
         }
         return false;
@@ -52,7 +52,7 @@ public class Predator extends Creature{
 
 
     private Deque<Coordinates> buildPath(Coordinates startCoordinates, Coordinates endCoordinates, HashMap<Coordinates, Coordinates> previousNodes) {
-        Deque<Coordinates> path = new LinkedList<Coordinates>();
+        Deque<Coordinates> path = new LinkedList<>();
         Coordinates current = endCoordinates;
         while (current != null && previousNodes.containsKey(current)) {
             path.addFirst(current);
@@ -86,14 +86,26 @@ public class Predator extends Creature{
     @Override
     public void makeMove(Coordinates currentPosition, Map map){
         Deque<Coordinates> pathForPray = findPray(currentPosition, map);
+        if (pathForPray == null || pathForPray.isEmpty()) {
+            // Handle the case where no path to grass is found
+            return;
+        }
         Entity predator = map.getFromMap(currentPosition);
-        map.remove(currentPosition);
-        if (map.getFromMap(pathForPray.peek()) instanceof Herbivore){
+        if (predator == null) {
+            // Handle the case where there is no herbivore at the current position
+            return;
+        }
+        Coordinates positionToMove = pathForPray.poll();
+        if (map.getFromMap(positionToMove) instanceof Herbivore){
+            map.remove(positionToMove);
+            predator.updateCoordinates(positionToMove);
+            map.put(positionToMove, predator);
             map.remove(currentPosition);
-            map.put(pathForPray.poll(), predator);
         }
         else {
-            map.put(pathForPray.poll(), predator);
+            predator.updateCoordinates(positionToMove);
+            map.put(positionToMove, predator);
+            map.remove(currentPosition);
         }
     }
 
