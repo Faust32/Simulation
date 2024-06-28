@@ -1,9 +1,9 @@
-package Package;
+package Simulation2D;
 
-import Package.Entities.Creature;
-import Package.Entities.Entity;
-import Package.Entities.Herbivore;
-import Package.Entities.Predator;
+import Simulation2D.Entities.Creature;
+import Simulation2D.Entities.Entity;
+import Simulation2D.Entities.Herbivore;
+import Simulation2D.Entities.Predator;
 
 import java.util.HashSet;
 import java.util.Set;

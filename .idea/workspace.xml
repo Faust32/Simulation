@@ -6,14 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="turnActions() - done. Now I need to do some fixes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Herbivore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Predator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Package/Simulation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Package/SimulationApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/HungerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/HungerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnGrass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnGrass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnHerbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnHerbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnPredator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnPredator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnRock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/CreaturesStatusRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/CreaturesStatusRender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/EntityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/EntityName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Herbivore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Predator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Grass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Rock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Rock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/EntityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/EntityMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/MapDimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/MapDimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/SearchAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Simulation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +72,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App.executor": "Run",
+    "Application.Main.executor": "Run",
     "Application.MainPrikol.executor": "Run",
     "Application.Map.executor": "Debug",
     "Application.Map1.executor": "Run",
@@ -73,7 +89,7 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "settings.sync",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -81,6 +97,43 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Package" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Package.Actions" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation2D.Main" />
+      <module name="Simulation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Simulation2D.Entities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Simulation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Simulation2D.Simulation" />
+      <module name="Simulation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Simulation2D.Entities.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Simulation" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -135,7 +188,14 @@
       <workItem from="1718475001430" duration="1902000" />
       <workItem from="1718512826846" duration="5268000" />
       <workItem from="1718611818117" duration="1937000" />
-      <workItem from="1718635776308" duration="649000" />
+      <workItem from="1718635776308" duration="2627000" />
+      <workItem from="1718643594089" duration="12380000" />
+      <workItem from="1718772154536" duration="5222000" />
+      <workItem from="1719029747032" duration="16829000" />
+      <workItem from="1719211252791" duration="19270000" />
+      <workItem from="1719337227829" duration="24873000" />
+      <workItem from="1719418291131" duration="12208000" />
+      <workItem from="1719550026688" duration="5735000" />
     </task>
     <task id="LOCAL-00001" summary="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
       <option name="closed" value="true" />
@@ -185,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718423212748</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="turnActions() - done. Now I need to do some fixes.">
+      <option name="closed" value="true" />
+      <created>1718636492343</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718636492343</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,19 +285,15 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="5" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Package/Herbivore.java</url>
-          <line>72</line>
-          <properties class="Package.Herbivore" method="makeMove">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="14" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Simulation2D/Main.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Package/Simulation.java</url>
+          <url>file://$PROJECT_DIR$/src/Simulation2D/Actions/SpawnHerbivore.java</url>
           <line>30</line>
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

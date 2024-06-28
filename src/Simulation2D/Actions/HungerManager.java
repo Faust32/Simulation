@@ -1,9 +1,9 @@
-package Package.Actions;
+package Simulation2D.Actions;
 
-import Package.Entities.Creature;
-import Package.Entities.Herbivore;
-import Package.CreaturesStatusRender;
-import Package.EntityMap;
+import Simulation2D.Entities.Creature;
+import Simulation2D.Entities.Herbivore;
+import Simulation2D.CreaturesStatusRender;
+import Simulation2D.EntityMap;
 
 import java.util.Set;
 

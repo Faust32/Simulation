@@ -1,5 +1,5 @@
-package Package.Entities;
-import Package.Coordinates;
+package Simulation2D.Entities;
+import Simulation2D.Coordinates;
 
 
 abstract public class Entity {

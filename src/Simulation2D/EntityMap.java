@@ -1,12 +1,12 @@
-package Package;
-import Package.Entities.Entity;
+package Simulation2D;
+import Simulation2D.Entities.Entity;
 
 import java.util.HashMap;
 
 public class EntityMap {
     private final HashMap<Coordinates, Entity> map = new HashMap<>();
 
-    public Entity getFromMap(Coordinates coordinates) {
+    public Entity getEntityFromMap(Coordinates coordinates) {
         return map.get(coordinates);
     }
 
@@ -26,7 +26,8 @@ public class EntityMap {
         return map.entrySet();
     }
 
-    public boolean containsValue(Entity creature) {
-        return map.containsValue(creature);
+    public boolean containsEntity(Entity entity) {
+        return map.containsValue(entity);
     }
+
 }

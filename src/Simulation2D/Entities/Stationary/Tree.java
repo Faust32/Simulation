@@ -1,8 +1,8 @@
-package Package.Entities.Stationary;
+package Simulation2D.Entities.Stationary;
 
-import Package.Entities.Entity;
-import Package.Entities.EntityName;
-import Package.Coordinates;
+import Simulation2D.Entities.Entity;
+import Simulation2D.Entities.EntityName;
+import Simulation2D.Coordinates;
 
 public class Tree extends Entity {
     public Tree(Coordinates coordinates, EntityName entityName) {

@@ -1,14 +1,14 @@
-package Package.Actions;
+package Simulation2D.Actions;
 
-import Package.Coordinates;
-import Package.Entities.EntityName;
-import Package.Entities.Stationary.Grass;
-import Package.EntityMap;
+import Simulation2D.Coordinates;
+import Simulation2D.Entities.EntityName;
+import Simulation2D.Entities.Stationary.Grass;
+import Simulation2D.EntityMap;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static Package.MapDimension.height;
-import static Package.MapDimension.width;
+import static Simulation2D.MapDimension.height;
+import static Simulation2D.MapDimension.width;
 
 
 public class SpawnGrass extends Action{

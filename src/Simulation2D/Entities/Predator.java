@@ -1,14 +1,14 @@
-package Package.Entities;
+package Simulation2D.Entities;
 
-import Package.Coordinates;
-import Package.SearchAlgorithm;
-import Package.EntityMap;
+import Simulation2D.Coordinates;
+import Simulation2D.SearchAlgorithm;
+import Simulation2D.EntityMap;
 
 import java.util.Deque;
 
 public class Predator extends Creature {
-
     private final int attackDamage = 5;
+
     public Predator(Coordinates coordinates, EntityName entityName) {
         super(coordinates, entityName);
         super.healthPoints = 50;
@@ -22,7 +22,7 @@ public class Predator extends Creature {
     SearchAlgorithm searchAlgorithm = new SearchAlgorithm();
 
     private void attackHerbivore(EntityMap entityMap, Coordinates coordinateForAttack) {
-        Entity creature = entityMap.getFromMap(coordinateForAttack);
+        Entity creature = entityMap.getEntityFromMap(coordinateForAttack);
         if (creature instanceof Herbivore) {
             ((Herbivore)creature).changeHealthPoints(-attackDamage);
             if (((Herbivore) creature).isDead()) {
@@ -39,10 +39,10 @@ public class Predator extends Creature {
         if (pathForPray.isEmpty()) {
             return;
         }
-        Entity predator = entityMap.getFromMap(currentPosition);
+        Entity predator = entityMap.getEntityFromMap(currentPosition);
         Coordinates positionToMove = pathForPray.poll();
 
-        // проверка циклического движения
+        // проверка циклического движения, чтобы животные не ходили туда-сюда
         if (lastSteps.contains(positionToMove)) {
             pathForPray.clear();
             searchAlgorithm.findPray(currentPosition, entityMap);
@@ -59,7 +59,7 @@ public class Predator extends Creature {
         }
         lastSteps.addLast(currentPosition);
         // совершается движение/атака
-        Entity entityAtNewPosition = entityMap.getFromMap(positionToMove);
+        Entity entityAtNewPosition = entityMap.getEntityFromMap(positionToMove);
         if (entityAtNewPosition instanceof Herbivore) {
             attackHerbivore(entityMap, positionToMove);
             return;

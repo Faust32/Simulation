@@ -1,8 +1,8 @@
-package Package.Actions;
+package Simulation2D.Actions;
 
-import Package.Entities.*;
-import Package.EntityMap;
-import Package.CreaturesStatusRender;
+import Simulation2D.Entities.*;
+import Simulation2D.EntityMap;
+import Simulation2D.CreaturesStatusRender;
 
 import java.util.Set;
 
@@ -10,7 +10,7 @@ import java.util.Set;
 public class Action {
     CreaturesStatusRender statusRender = new CreaturesStatusRender();
 
-    public void fillMapRandomly(EntityMap entityMap) {
+    private void fillMapRandomly(EntityMap entityMap) {
         SpawnGrass spawnGrass = new SpawnGrass();
         spawnGrass.fillWithGrass(entityMap);
 
@@ -36,7 +36,7 @@ public class Action {
     public void turnActions(EntityMap entityMap) {
         Set<Creature> creatures = statusRender.scanCreaturesInMap(entityMap);
         for (Creature creature : creatures) {
-            if(!entityMap.containsValue(creature)){
+            if(!entityMap.containsEntity(creature)){
                 continue;
             }
             for (int i = 0; i < creature.getMovementSpeed(); i++) {

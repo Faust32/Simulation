@@ -1,19 +1,19 @@
-package Package.Actions;
+package Simulation2D.Actions;
 
-import Package.Entities.Creature;
-import Package.Entities.EntityName;
-import Package.Entities.Predator;
-import Package.Coordinates;
-import Package.EntityMap;
+import Simulation2D.Entities.Creature;
+import Simulation2D.Entities.EntityName;
+import Simulation2D.Entities.Predator;
+import Simulation2D.Coordinates;
+import Simulation2D.EntityMap;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static Package.MapDimension.height;
-import static Package.MapDimension.width;
+import static Simulation2D.MapDimension.height;
+import static Simulation2D.MapDimension.width;
 
 
 public class SpawnPredator extends Action {
-    int numberOfPredators = (height * width) / 16 - 3;
+    private int numberOfPredators = (height * width) / 30;
     public void fillWithPredators(EntityMap entityMap) {
         while (numberOfPredators > 0) {
             int randomCoordinateX = ThreadLocalRandom.current().nextInt(1, height);

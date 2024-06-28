@@ -1,6 +1,6 @@
-package Package.Entities;
-import Package.Coordinates;
-import Package.EntityMap;
+package Simulation2D.Entities;
+import Simulation2D.Coordinates;
+import Simulation2D.EntityMap;
 
 
 public abstract class Creature extends Entity {

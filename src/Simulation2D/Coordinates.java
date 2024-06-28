@@ -1,10 +1,10 @@
-package Package;
+package Simulation2D;
 
 import java.util.Objects;
 
 public class Coordinates {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;

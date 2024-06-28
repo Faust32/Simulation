@@ -1,4 +1,4 @@
-package Package;
+package Simulation2D;
 
 public final class MapDimension {
     public static int width;

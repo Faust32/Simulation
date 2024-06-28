@@ -1,22 +1,24 @@
-package Package;
+package Simulation2D;
 
-import Package.Actions.HungerManager;
-import Package.Actions.SpawnGrass;
-import Package.Entities.Entity;
-import Package.Entities.Herbivore;
-import Package.Actions.Action;
+import Simulation2D.Actions.HungerManager;
+import Simulation2D.Actions.SpawnGrass;
+import Simulation2D.Entities.Entity;
+import Simulation2D.Entities.Herbivore;
+import Simulation2D.Actions.Action;
 
 import java.util.Scanner;
 
 class Simulation {
     private boolean pause = false;
+    private int numberOfIterations = 0;
+
     Renderer renderer = new Renderer();
     Action action = new Action();
     EntityMap entityMap = new EntityMap();
     CreaturesStatusRender statusRender = new CreaturesStatusRender();
     HungerManager hungerManager = new HungerManager();
     SpawnGrass spawnGrass = new SpawnGrass();
-    int numberOfIterations = 0;
+
 
     private void gameModeSelection(int flag) {
         switch (flag){
@@ -32,7 +34,6 @@ class Simulation {
         renderer.fieldStaticPrinter(entityMap);
         int flag = renderer.greeter();
         gameModeSelection(flag);
-
     }
 
     private void proceedIteration() {
@@ -50,13 +51,13 @@ class Simulation {
         }
     }
 
-    public void nextTurn() {
+    private void nextTurn() {
         proceedIteration();
         System.out.println("Нажмите 1, чтобы сделать еще один шаг в симуляции.");
         gameModeSelection(renderer.inputScanner());
     }
 
-    public int countHerbivoresOnMap() {
+    private int countHerbivoresOnMap() {
         int count = 0;
         for (java.util.Map.Entry<Coordinates, Entity> entry : entityMap.entrySet()) {
             Entity entity = entry.getValue();
@@ -66,8 +67,10 @@ class Simulation {
         }
         return count;
     }
+
     private boolean exitSimulation = false;
-    public void startEndlessMode() {
+
+    private void startEndlessMode() {
         Scanner scanner = new Scanner(System.in);
         Thread inputThread = new Thread(() -> {
             while (true){
@@ -100,7 +103,9 @@ class Simulation {
                 }
             }
         });
+
         inputThread.start();
+
         while (countHerbivoresOnMap() > 0 && !exitSimulation) {
             proceedIteration();
             try {
@@ -109,7 +114,7 @@ class Simulation {
                     System.out.println("Пауза: введите 4 для продолжения.");
                 }
                 while (pause && !exitSimulation) {
-                    // ждем, пока pause не станет false
+                    // ждем, пока pause не станет false и проверяем ввод
                     Thread.sleep(500);
                 }
             } catch (InterruptedException e) {

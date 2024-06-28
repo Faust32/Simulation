@@ -1,18 +1,18 @@
-package Package.Actions;
+package Simulation2D.Actions;
 
-import Package.Entities.Creature;
-import Package.Entities.EntityName;
-import Package.Entities.Herbivore;
-import Package.Coordinates;
-import Package.EntityMap;
+import Simulation2D.Entities.Creature;
+import Simulation2D.Entities.EntityName;
+import Simulation2D.Entities.Herbivore;
+import Simulation2D.Coordinates;
+import Simulation2D.EntityMap;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static Package.MapDimension.height;
-import static Package.MapDimension.width;
+import static Simulation2D.MapDimension.height;
+import static Simulation2D.MapDimension.width;
 
 public class SpawnHerbivore extends Action {
-    int numberOfHerbivore = (height * width) / 16 - 1;
+    private int numberOfHerbivore = (height * width) / 16 - 1;
     private void fillWithCows(EntityMap entityMap) {
         while (numberOfHerbivore > 0) {
             int randomCoordinateX = ThreadLocalRandom.current().nextInt(1, height);

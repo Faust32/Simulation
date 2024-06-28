@@ -1,9 +1,9 @@
-package Package.Entities;
+package Simulation2D.Entities;
 
-import Package.Coordinates;
-import Package.SearchAlgorithm;
-import Package.EntityMap;
-import Package.Entities.Stationary.Grass;
+import Simulation2D.Coordinates;
+import Simulation2D.SearchAlgorithm;
+import Simulation2D.EntityMap;
+import Simulation2D.Entities.Stationary.Grass;
 
 import java.util.Deque;
 
@@ -26,13 +26,13 @@ public class Herbivore extends Creature {
         if (pathForGrass.isEmpty()) {
             return;
         }
-        Entity herbivore = entityMap.getFromMap(currentPosition);
+        Entity herbivore = entityMap.getEntityFromMap(currentPosition);
         if (herbivore == null) {
             return;
         }
         Coordinates positionToMove = pathForGrass.poll();
 
-        // проверка циклического движения
+        // проверка циклического движения, чтобы животные не ходили туда-сюда
         if (lastSteps.contains(positionToMove)) {
             pathForGrass.clear();
             searchAlgorithm.findGrass(currentPosition, entityMap);
@@ -48,7 +48,7 @@ public class Herbivore extends Creature {
         }
         lastSteps.addLast(currentPosition);
         // совершается движение
-        Entity entityAtNewPosition = entityMap.getFromMap(positionToMove);
+        Entity entityAtNewPosition = entityMap.getEntityFromMap(positionToMove);
         if (entityAtNewPosition instanceof Grass) {
             entityMap.removeFromMap(positionToMove);
             this.changeHealthPoints(7);

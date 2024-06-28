@@ -1,16 +1,16 @@
-package Package;
+package Simulation2D;
 
-import Package.Entities.Herbivore;
+import Simulation2D.Entities.Herbivore;
 
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import Package.Entities.Stationary.Grass;
+import Simulation2D.Entities.Stationary.Grass;
 
-import static Package.MapDimension.height;
-import static Package.MapDimension.width;
+import static Simulation2D.MapDimension.height;
+import static Simulation2D.MapDimension.width;
 
 public class SearchAlgorithm {
 
@@ -28,9 +28,9 @@ public class SearchAlgorithm {
     private void addNewReachablePoint(Coordinates newCoordinate, Coordinates currentCoordinate, EntityMap entityMap) {
         if (isCoordinateInMap(newCoordinate) && !explored.contains(newCoordinate)
                 && !reachablePoints.contains(newCoordinate)
-                && (entityMap.getFromMap(newCoordinate) instanceof Herbivore
-                || entityMap.getFromMap(newCoordinate) instanceof Grass
-                || entityMap.getFromMap(newCoordinate) == null)
+                && (entityMap.getEntityFromMap(newCoordinate) instanceof Herbivore
+                || entityMap.getEntityFromMap(newCoordinate) instanceof Grass
+                || entityMap.getEntityFromMap(newCoordinate) == null)
                 && !lastSteps.contains(newCoordinate)) {  // проверка памяти
             reachablePoints.addLast(newCoordinate);
             previousNodes.put(newCoordinate, currentCoordinate);
@@ -70,7 +70,7 @@ public class SearchAlgorithm {
             Coordinates node = reachablePoints.poll();
             explored.add(node);
 
-            if (entityMap.getFromMap(node) instanceof Grass) {
+            if (entityMap.getEntityFromMap(node) instanceof Grass) {
                 buildPath(node, startCoordinates);
                 pathForObject.pop();
                 found = true;
@@ -95,7 +95,7 @@ public class SearchAlgorithm {
         while (!reachablePoints.isEmpty()) {
             Coordinates node = reachablePoints.poll();
             explored.add(node);
-            if (entityMap.getFromMap(node) instanceof Herbivore) {
+            if (entityMap.getEntityFromMap(node) instanceof Herbivore) {
                 buildPath(node, startCoordinates);
                 pathForObject.pop();
                 return;

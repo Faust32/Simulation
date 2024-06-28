@@ -1,30 +1,34 @@
-package Package;
-import Package.Entities.EntityName;
+package Simulation2D;
+import Simulation2D.Entities.EntityName;
 
 import java.util.Scanner;
 
 public class Renderer {
-    public void fieldStaticPrinter(EntityMap map){
-        for (int i = 0; i < MapDimension.height-1; i++) {
-            System.out.print("_______");
+    public void fieldStaticPrinter(EntityMap map) {
+        for (int i = 0; i < MapDimension.width - 1; i++) {
+            System.out.print("________");
         }
-            for (int j = 1; j <= MapDimension.height; j++) {
-            System.out.print("\n");
-            for (int i = 1; i <= MapDimension.width+1; i++) {
-                if (map.getFromMap(new Coordinates(i, j)) == null) System.out.printf(" |    ");
-                else {
-                    EntityName a = map.getFromMap(new Coordinates(i, j)).entityName;
-                    System.out.printf(" |" + a.entityName());
+        for (int j = 1; j <= MapDimension.height; j++) {
+            System.out.println();
+            for (int i = 1; i <= MapDimension.width + 1; i++) {
+                if (map.getEntityFromMap(new Coordinates(i, j)) == null) {
+                    System.out.print(" |    ");
+                } else {
+                    EntityName entityName = map.getEntityFromMap(new Coordinates(i, j)).entityName;
+                    System.out.print(" |" + entityName.entityName());
                 }
             }
-
         }
-        System.out.print("\n");
-            for (int i = 0; i < MapDimension.height-1; i++) {
-                System.out.print("-------");
-            }
+
+        System.out.println();
+
+        for (int i = 0; i < MapDimension.width - 1; i++) {
+            System.out.print("--------");
+        }
+
         System.out.println();
     }
+
 
     public int greeter(){
         System.out.println("Привет. Это симуляция. Сверху расположена карта с существами. С каждой итерацией они перемещаются к своей цели: для травоядных - трава, для хищников - травоядные.");
@@ -60,6 +64,7 @@ public class Renderer {
 
         return input;
     }
+
     public int startInputScanner() {
         Scanner scanner = new Scanner(System.in);
         int input = 0;
