@@ -16,6 +16,10 @@ public class Coordinates {
         return y;
     }
 
+    public String getStringCoordinates(){
+        return "{" + getX() + ", " + getY() + "}";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
