@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46bd2cb9-38a3-4529-87c8-d50a3cab3e44" name="Changes" comment="turnActions() - done. Now I need to do some fixes.">
+      <change afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/MoveCreatures.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/SpawnAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Simulation2D/InputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/Action.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Actions/HungerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Actions/HungerManager.java" afterDir="false" />
@@ -17,7 +20,7 @@
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/CreaturesStatusRender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/CreaturesStatusRender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/EntityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/EntityName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/EntityName.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Herbivore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Herbivore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Predator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Predator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Grass.java" afterDir="false" />
@@ -25,7 +28,7 @@
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Entities/Stationary/Tree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/EntityMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/EntityMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Simulation2D/MapDimension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/MapDimension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Simulation2D/MapDimension.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Renderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/SearchAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/SearchAlgorithm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Simulation2D/Simulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Simulation2D/Simulation.java" afterDir="false" />
@@ -81,6 +84,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/faust/IdeaProjects/TreasureHunt",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -89,7 +93,7 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync",
+    "settings.editor.selected.configurable": "preferences.editor.code.editing",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -138,8 +142,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -196,6 +200,17 @@
       <workItem from="1719337227829" duration="24873000" />
       <workItem from="1719418291131" duration="12208000" />
       <workItem from="1719550026688" duration="5735000" />
+      <workItem from="1719649051197" duration="2701000" />
+      <workItem from="1719809795244" duration="458000" />
+      <workItem from="1719816717348" duration="84000" />
+      <workItem from="1719817029115" duration="76000" />
+      <workItem from="1719817116028" duration="503000" />
+      <workItem from="1719843194521" duration="130000" />
+      <workItem from="1719843483547" duration="5000" />
+      <workItem from="1719843964374" duration="89000" />
+      <workItem from="1719845877027" duration="11794000" />
+      <workItem from="1719980076845" duration="21394000" />
+      <workItem from="1720285998652" duration="2033000" />
     </task>
     <task id="LOCAL-00001" summary="Added BFS search for Herbivore, now I need to finish buildPath function and do the same for Predators (will be easy)">
       <option name="closed" value="true" />
@@ -285,16 +300,6 @@
           <properties class="java.util.ConcurrentModificationException" package="java.util" />
           <option name="timeStamp" value="5" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Simulation2D/Main.java</url>
-          <line>5</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Simulation2D/Actions/SpawnHerbivore.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

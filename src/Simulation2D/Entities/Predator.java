@@ -4,13 +4,13 @@ import Simulation2D.Coordinates;
 import Simulation2D.SearchAlgorithm;
 import Simulation2D.EntityMap;
 
-import java.util.Deque;
-
 public class Predator extends Creature {
     private final int attackDamage = 5;
+    private final SearchAlgorithm searchAlgorithm = new SearchAlgorithm();
 
-    public Predator(Coordinates coordinates, EntityName entityName) {
-        super(coordinates, entityName);
+    public Predator(Coordinates coordinates) {
+        super(coordinates);
+        super.entityName = "PRED";
         super.healthPoints = 50;
         super.movementSpeed = 2;
     }
@@ -19,56 +19,31 @@ public class Predator extends Creature {
         return this.attackDamage;
     }
 
-    SearchAlgorithm searchAlgorithm = new SearchAlgorithm();
-
-    private void attackHerbivore(EntityMap entityMap, Coordinates coordinateForAttack) {
-        Entity creature = entityMap.getEntityFromMap(coordinateForAttack);
+    protected void attack(EntityMap entityMap, Coordinates coordinateForAttack) {
+        Entity creature = entityMap.get(coordinateForAttack);
         if (creature instanceof Herbivore) {
             ((Herbivore)creature).changeHealthPoints(-attackDamage);
             if (((Herbivore) creature).isDead()) {
-                entityMap.removeFromMap(coordinateForAttack);
+                entityMap.remove(coordinateForAttack);
                 this.changeHealthPoints(3);
             }
         }
     }
 
     @Override
-    public void makeMove(Coordinates currentPosition, EntityMap entityMap) {
-        final Deque<Coordinates> pathForPray = searchAlgorithm.getPathForPray(currentPosition, entityMap);
-        final Deque<Coordinates> lastSteps = searchAlgorithm.getLastSteps();
-        if (pathForPray.isEmpty()) {
-            return;
-        }
-        Entity predator = entityMap.getEntityFromMap(currentPosition);
-        Coordinates positionToMove = pathForPray.poll();
-
-        // проверка циклического движения, чтобы животные не ходили туда-сюда
-        if (lastSteps.contains(positionToMove)) {
-            pathForPray.clear();
-            searchAlgorithm.findPray(currentPosition, entityMap);
-            if (pathForPray.isEmpty()) {
-                return;
-            }
-            positionToMove = pathForPray.poll();
-        }
-
-        // обновляется память последних шагов, чтобы избежать повторов
-        int memorySize = 5;
-        if (lastSteps.size() >= memorySize) {
-            lastSteps.removeFirst();
-        }
-        lastSteps.addLast(currentPosition);
-        // совершается движение/атака
-        Entity entityAtNewPosition = entityMap.getEntityFromMap(positionToMove);
+    public void interact(EntityMap entityMap, Coordinates positionToMove, Entity entityAtNewPosition) {
         if (entityAtNewPosition instanceof Herbivore) {
-            attackHerbivore(entityMap, positionToMove);
+            this.attack(entityMap, positionToMove);
             return;
         } else if (entityAtNewPosition instanceof Predator) {
             return;
         }
-        predator.updateCoordinates(positionToMove);
-        entityMap.putInMap(positionToMove, predator);
-        entityMap.removeFromMap(currentPosition);
+        entityMap.remove(this.coordinates);
+        this.updateCoordinates(positionToMove);
+        entityMap.put(positionToMove, this);
+
     }
+
+
 
 }

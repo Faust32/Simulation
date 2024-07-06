@@ -1,5 +1,6 @@
 package Simulation2D;
 
+import Simulation2D.Entities.Entity;
 import Simulation2D.Entities.Herbivore;
 
 import java.util.ArrayList;
@@ -7,30 +8,45 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+import Simulation2D.Entities.Predator;
 import Simulation2D.Entities.Stationary.Grass;
 
-import static Simulation2D.MapDimension.height;
-import static Simulation2D.MapDimension.width;
-
 public class SearchAlgorithm {
-
     private final Deque<Coordinates> reachablePoints = new LinkedList<>();
     private final HashMap<Coordinates, Coordinates> previousNodes = new HashMap<>();
     private final ArrayList<Coordinates> explored = new ArrayList<>();
     private final Deque<Coordinates> pathForObject = new LinkedList<>();
     private final Deque<Coordinates> lastSteps = new LinkedList<>();
 
+    private boolean isCoordinateInMap(Coordinates coordinate, EntityMap entityMap) {
+        return coordinate.getX() <= entityMap.width && coordinate.getY() <= entityMap.height && coordinate.getX() > 0 && coordinate.getY() > 0;
+    }
 
-    private boolean isCoordinateInMap(Coordinates coordinate) {
-        return coordinate.getX() <= width && coordinate.getY() <= height && coordinate.getX() > 0 && coordinate.getY() > 0;
+    public void updateLastSteps(Deque<Coordinates> lastSteps, Coordinates currentPosition, int memorySize) {
+        if (lastSteps.size() >= memorySize) {
+            lastSteps.removeFirst();
+        }
+        lastSteps.addLast(currentPosition);
+    }
+
+    public Coordinates checkForCycleMovements(Deque<Coordinates> lastSteps, Coordinates positionToMove, Coordinates currentPosition, EntityMap entityMap, Deque<Coordinates> path) {
+        if (lastSteps.contains(positionToMove)) {
+            path.clear();
+            findObject(currentPosition, entityMap);
+            if (path.isEmpty()) {
+                return null;
+            }
+            positionToMove = path.poll();
+        }
+        return positionToMove;
     }
 
     private void addNewReachablePoint(Coordinates newCoordinate, Coordinates currentCoordinate, EntityMap entityMap) {
-        if (isCoordinateInMap(newCoordinate) && !explored.contains(newCoordinate)
+        if (isCoordinateInMap(newCoordinate, entityMap) && !explored.contains(newCoordinate)
                 && !reachablePoints.contains(newCoordinate)
-                && (entityMap.getEntityFromMap(newCoordinate) instanceof Herbivore
-                || entityMap.getEntityFromMap(newCoordinate) instanceof Grass
-                || entityMap.getEntityFromMap(newCoordinate) == null)
+                && (entityMap.get(newCoordinate) instanceof Herbivore
+                || entityMap.get(newCoordinate) instanceof Grass
+                || entityMap.get(newCoordinate) == null)
                 && !lastSteps.contains(newCoordinate)) {  // проверка памяти
             reachablePoints.addLast(newCoordinate);
             previousNodes.put(newCoordinate, currentCoordinate);
@@ -59,7 +75,7 @@ public class SearchAlgorithm {
         pathForObject.addFirst(startCoordinates);
     }
 
-    public void findGrass(Coordinates startCoordinates, EntityMap entityMap) {
+    private void findObject(Coordinates startCoordinates, EntityMap entityMap) {
         reachablePoints.clear();
         previousNodes.clear();
         explored.clear();
@@ -70,9 +86,16 @@ public class SearchAlgorithm {
             Coordinates node = reachablePoints.poll();
             explored.add(node);
 
-            if (entityMap.getEntityFromMap(node) instanceof Grass) {
-                buildPath(node, startCoordinates);
-                pathForObject.pop();
+            Entity creature = entityMap.get(startCoordinates);
+            Entity targetEntity = entityMap.get(node);
+
+            if (targetEntity instanceof Grass && creature instanceof Herbivore) {
+                checkAndBuildPath(node, startCoordinates);
+                found = true;
+            }
+
+            else if (targetEntity instanceof Herbivore && creature instanceof Predator) {
+                checkAndBuildPath(node, startCoordinates);
                 found = true;
             }
 
@@ -80,36 +103,18 @@ public class SearchAlgorithm {
         }
     }
 
-
-    public Deque<Coordinates> getPathForGrass(Coordinates startCoordinates, EntityMap entityMap){
-        findGrass(startCoordinates, entityMap);
-        return pathForObject;
+    private void checkAndBuildPath(Coordinates node, Coordinates startCoordinates) {
+        buildPath(node, startCoordinates);
+        pathForObject.pop();
     }
 
-    public void findPray(Coordinates startCoordinates, EntityMap entityMap){
-        reachablePoints.clear();
-        previousNodes.clear();
-        explored.clear();
-        reachablePoints.add(startCoordinates);
-        previousNodes.put(startCoordinates, null);
-        while (!reachablePoints.isEmpty()) {
-            Coordinates node = reachablePoints.poll();
-            explored.add(node);
-            if (entityMap.getEntityFromMap(node) instanceof Herbivore) {
-                buildPath(node, startCoordinates);
-                pathForObject.pop();
-                return;
-            }
-            getNewReachablePoints(node, entityMap);
-        }
-    }
-
-    public Deque<Coordinates> getPathForPray(Coordinates startCoordinates, EntityMap entityMap){
-        findPray(startCoordinates, entityMap);
+    public Deque<Coordinates> getPathForObject(Coordinates startCoordinates, EntityMap entityMap){
+        findObject(startCoordinates, entityMap);
         return pathForObject;
     }
 
     public Deque<Coordinates> getLastSteps(){
         return lastSteps;
     }
+
 }

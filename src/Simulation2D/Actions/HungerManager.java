@@ -7,10 +7,10 @@ import Simulation2D.EntityMap;
 
 import java.util.Set;
 
-public class HungerManager extends Action{
-    CreaturesStatusRender statusRender = new CreaturesStatusRender();
+public class HungerManager{
+    private final CreaturesStatusRender statusRender = new CreaturesStatusRender();
 
-    public void startHungerMechanism(EntityMap entityMap){
+    public void startHunger(EntityMap entityMap){
         Set<Creature> creatures = statusRender.scanCreaturesInMap(entityMap);
         for(Creature creature : creatures){
             if (creature instanceof Herbivore){

@@ -4,9 +4,17 @@ import Simulation2D.Entities.Entity;
 import java.util.HashMap;
 
 public class EntityMap {
+    public int height;
+    public int width;
+
     private final HashMap<Coordinates, Entity> map = new HashMap<>();
 
-    public Entity getEntityFromMap(Coordinates coordinates) {
+    public EntityMap(int height, int width) {
+        this.height = height;
+        this.width = width;
+    }
+
+    public Entity get(Coordinates coordinates) {
         return map.get(coordinates);
     }
 
@@ -14,15 +22,15 @@ public class EntityMap {
         return !map.containsKey(coordinates);
     }
 
-    public void putInMap(Coordinates coordinates, Entity entity) {
+    public void put(Coordinates coordinates, Entity entity) {
         map.put(coordinates, entity);
     }
 
-    public void removeFromMap(Coordinates coordinates) {
+    public void remove(Coordinates coordinates) {
         map.remove(coordinates);
     }
 
-    public Iterable<? extends java.util.Map.Entry<Coordinates, Entity>> entrySet() {
+    public Iterable<? extends java.util.Map.Entry<Coordinates, Entity>> getEntries() {
         return map.entrySet();
     }
 
