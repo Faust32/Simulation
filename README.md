@@ -5,5 +5,6 @@
 
 ТЗ проекта: https://zhukovsd.github.io/java-backend-learning-course/Projects/Simulation/ 
 
-Ревью до исправления: https://gist.github.com/Asenim/5460aad410c49de1d82aa2ec0e18740c
+Ревью до исправления: https://gist.github.com/Asenim/5460aad410c49de1d82aa2ec0e18740c/
+
 Отдельное спасибо Алексею за ревью!
